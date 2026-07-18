@@ -1,0 +1,55 @@
+<svg width="800" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1" />
+      <feColorMatrix type="saturate" values="0.1"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="1.5" numOctaves="3" seed="2" />
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="discrete" tableValues="0 0 0 0 0 1" />
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  <!-- Base wood color -->
+  <rect width="800" height="800" fill="#d4c4a8"/>
+
+  <!-- Wood grain vertical planks -->
+  <g opacity="0.15">
+    <rect x="0" y="0" width="120" height="800" fill="#a89070"/>
+    <rect x="122" y="0" width="115" height="800" fill="#b09878"/>
+    <rect x="239" y="0" width="118" height="800" fill="#a28860"/>
+    <rect x="359" y="0" width="121" height="800" fill="#b8a080"/>
+    <rect x="482" y="0" width="116" height="800" fill="#a89070"/>
+    <rect x="600" y="0" width="119" height="800" fill="#b09878"/>
+    <rect x="721" y="0" width="79" height="800" fill="#a28860"/>
+  </g>
+
+  <!-- Plank separators -->
+  <g opacity="0.08">
+    <line x1="121" y1="0" x2="121" y2="800" stroke="#8b7355" stroke-width="2"/>
+    <line x1="238" y1="0" x2="238" y2="800" stroke="#8b7355" stroke-width="2"/>
+    <line x1="358" y1="0" x2="358" y2="800" stroke="#8b7355" stroke-width="2"/>
+    <line x1="481" y1="0" x2="481" y2="800" stroke="#8b7355" stroke-width="2"/>
+    <line x1="599" y1="0" x2="599" y2="800" stroke="#8b7355" stroke-width="2"/>
+    <line x1="720" y1="0" x2="720" y2="800" stroke="#8b7355" stroke-width="2"/>
+  </g>
+
+  <!-- Subtle wood texture -->
+  <rect width="800" height="800" filter="url(#noise)" opacity="0.06"/>
+
+  <!-- Fine grain -->
+  <rect width="800" height="800" filter="url(#grain)" opacity="0.03"/>
+
+  <!-- Subtle directional gradient for depth -->
+  <rect width="800" height="800" fill="url(#woodGradient)" opacity="0.1"/>
+  <defs>
+    <linearGradient id="woodGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#000000;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+</svg>
